@@ -9,10 +9,12 @@ import syllInitialState from './context/states/syllInitialState';
 import PageTwo from './pages/pageTwo';
 import Box from '@mui/material/Box';
 import PageThree from './pages/pageThree';
+import useSyll from './hooks/useSyll';
 
 const App = () => {
     const [page, setPage] = useState(1);
     const [syll, syllDispatch] = useReducer(syllReducer, syllInitialState);
+    const useHook = useSyll();
     console.log(syll);
 
     return (
@@ -32,9 +34,9 @@ const App = () => {
             </Box>
             <Container className="flex flex-col p-4 space-y-4">
                 <Box className="h-24" />
-                {page == 1 && <PageOne syll={syll} syllDispatch={syllDispatch} />}
-                {page == 2 && <PageTwo syll={syll} syllDispatch={syllDispatch} />}
-                {page == 3 && <PageThree syll={syll} syllDispatch={syllDispatch} />}
+                {page == 1 && <PageOne syll={syll} syllDispatch={syllDispatch} useHook={useHook} />}
+                {page == 2 && <PageTwo syll={syll} syllDispatch={syllDispatch} useHook={useHook} />}
+                {page == 3 && <PageThree syll={syll} syllDispatch={syllDispatch} useHook={useHook} />}
             </Container>
         </>
     );

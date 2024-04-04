@@ -5,9 +5,12 @@ import {
     FETCH_ADDRESS_LOADING,
     FETCH_ADDRESS_SUCCESS,
     FETCH_ADDRESS_FAIL,
+    ONADD_ROWTABLE,
+    ONDELETE_ROWTABLE,
 } from '../../constants/syll';
 
 export const onChangeTextField = (key, value, validFunc) => (dispatch) => {
+    console.log(key, value);
     if (validFunc) {
         const validate = validFunc(value);
         if (!validate) dispatch({ type: ONCHANGE_SUCCESS, key, value });
@@ -22,6 +25,14 @@ export const onChangeTextField = (key, value, validFunc) => (dispatch) => {
         dispatch({ type: ONCHANGE_SUCCESS, key, value });
     }
 };
+
+export const onAddRowTable = (key, value) => (dispatch) => {
+    dispatch({ type: ONADD_ROWTABLE, key, value });
+}
+
+export const onDeleteRowTable = (key, id) => (dispatch) => {
+    dispatch({ type: ONDELETE_ROWTABLE, key, id });
+}
 
 export const fetchProviceData = (key) => async (dispatch) => {
     dispatch({ type: FETCH_ADDRESS_LOADING, key });

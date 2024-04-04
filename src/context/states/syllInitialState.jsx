@@ -1,4 +1,11 @@
-import { dataBloodGroup, dataCivilClass, dataEducationLevel, dataNation, dataPoliticalTheory, dataReligion } from '../../constants/sample';
+import {
+    dataBloodGroup,
+    dataCivilClass,
+    dataEducationLevel,
+    dataNation,
+    dataPoliticalTheory,
+    dataReligion,
+} from '../../constants/sample';
 
 export default {
     value: {
@@ -69,7 +76,7 @@ export default {
         jobTitle: '',
         civilClass: {
             data: dataCivilClass,
-            civilClassId: null
+            civilClassId: null,
         },
         civilClassCode: '',
         salaryWage: '',
@@ -79,12 +86,12 @@ export default {
         salaryAddOther: '',
         educationLevel: {
             data: dataEducationLevel,
-            educationLevelId: null
+            educationLevelId: null,
         },
         qualification: '',
         politicalTheory: {
             data: dataPoliticalTheory,
-            politicalTheoryId: null
+            politicalTheoryId: null,
         },
         stateManage: '',
         languageDegree: '',
@@ -107,28 +114,22 @@ export default {
         weight: '',
         bloodGroup: {
             data: dataBloodGroup,
-            bloodGroupId: null
+            bloodGroupId: null,
         },
         soldierRank: '',
         soldierFamily: '',
         id: '',
         idDate: null,
         socialId: '',
-        training: [
-            {schoolname: 'Đại học Sài gòn', major: 'IT', type: 'Chính quy', certificate: 'Kỹ sư'}
-        ],
-        summary: [
-            {name: '1'}
-        ],
+        training: [],
+        summary: [],
         selfExperience: '',
         selfJoinOrgan: '',
         selfRelationship: '',
-        myRelationship: [
-            {}
-        ],
+        myRelationship: [],
         partnerRelationship: [],
         salaryEvolution: [],
-        comment: ''
+        comment: '',
     },
     errorKeys: [],
     errorKeysMessage: {},

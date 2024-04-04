@@ -2,8 +2,10 @@ import {
     FETCH_ADDRESS_FAIL,
     FETCH_ADDRESS_LOADING,
     FETCH_ADDRESS_SUCCESS,
+    ONADD_ROWTABLE,
     ONCHANGE_FAIL,
     ONCHANGE_SUCCESS,
+    ONDELETE_ROWTABLE,
 } from '../../constants/syll';
 
 const syllReducer = (state, action) => {
@@ -37,6 +39,27 @@ const syllReducer = (state, action) => {
                 errorKeysMessage: {
                     ...state.errorKeysMessage,
                     [action.key]: action.message,
+                },
+            };
+
+        case ONADD_ROWTABLE:
+            return {
+                ...state,
+                value: {
+                    ...state.value,
+                    [action.key]: [...state.value[action.key], action.value],
+                },
+            };
+
+        case ONDELETE_ROWTABLE:
+            const data = state.value[action.key].filter(
+                (item) => item.id != action.id
+            );
+            return {
+                ...state,
+                value: {
+                    ...state.value,
+                    [action.key]: data,
                 },
             };
 
