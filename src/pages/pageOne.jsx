@@ -17,7 +17,6 @@ import {
     validateName,
     validateValueWithSpecialCharacters,
 } from '../utils/validateFunc';
-import dayjs from 'dayjs';
 
 const PageOne = ({ syll, syllDispatch, useHook }) => {
     useEffect(() => {

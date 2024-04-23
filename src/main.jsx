@@ -8,11 +8,13 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import MyDocument from './Document.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <App />
+          {/* <MyDocument /> */}
         </LocalizationProvider>
     </React.StrictMode>
 );
