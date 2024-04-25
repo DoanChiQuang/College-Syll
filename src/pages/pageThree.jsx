@@ -44,6 +44,8 @@ const PageThree = ({ syll, syllDispatch, useHook }) => {
                 variant="outlined"
                 fullWidth
                 required
+                error={syll.errorKeys.includes("workExperience")}
+                helperText={syll.errorKeys.includes("workExperience") && syll.errorKeysMessage.workExperience}
             />
             <Box className="flex items-center space-x-4">
                 <TextField
@@ -57,8 +59,9 @@ const PageThree = ({ syll, syllDispatch, useHook }) => {
                         )(syllDispatch)
                     }
                     variant="outlined"
-                    fullWidth
-                    required
+                    fullWidth                    
+                    error={syll.errorKeys.includes("achievement")}
+                    helperText={syll.errorKeys.includes("achievement") && syll.errorKeysMessage.achievement}
                 />
                 <DatePicker
                     label="(21.2) Năm khen thưởng"
@@ -87,8 +90,9 @@ const PageThree = ({ syll, syllDispatch, useHook }) => {
                         )(syllDispatch)
                     }
                     variant="outlined"
-                    fullWidth
-                    required
+                    fullWidth                    
+                    error={syll.errorKeys.includes("punishment")}
+                    helperText={syll.errorKeys.includes("punishment") && syll.errorKeysMessage.punishment}
                 />
                 <DatePicker
                     label="(22.2) Năm kỷ luật"
@@ -119,6 +123,8 @@ const PageThree = ({ syll, syllDispatch, useHook }) => {
                     variant="outlined"
                     fullWidth
                     required
+                    error={syll.errorKeys.includes("healthStatus")}
+                    helperText={syll.errorKeys.includes("healthStatus") && syll.errorKeysMessage.healthStatus}
                 />
                 <TextField
                     label="(23.2) Chiều cao (Cm)"
@@ -133,6 +139,8 @@ const PageThree = ({ syll, syllDispatch, useHook }) => {
                     variant="outlined"
                     fullWidth
                     required
+                    error={syll.errorKeys.includes("height")}
+                    helperText={syll.errorKeys.includes("height") && syll.errorKeysMessage.height}
                 />
                 <TextField
                     label="(23.3) Câng nặng (Kg)"
@@ -147,6 +155,8 @@ const PageThree = ({ syll, syllDispatch, useHook }) => {
                     variant="outlined"
                     fullWidth
                     required
+                    error={syll.errorKeys.includes("weight")}
+                    helperText={syll.errorKeys.includes("weight") && syll.errorKeysMessage.weight}
                 />
                 <Autocomplete
                     value={SelectedValue(
@@ -180,7 +190,8 @@ const PageThree = ({ syll, syllDispatch, useHook }) => {
                     }
                     variant="outlined"
                     fullWidth
-                    required
+                    error={syll.errorKeys.includes("soldierRank")}
+                    helperText={syll.errorKeys.includes("soldierRank") && syll.errorKeysMessage.soldierRank}
                 />
                 <TextField
                     label="(24.2) Con gia đình chính sách"
@@ -193,8 +204,9 @@ const PageThree = ({ syll, syllDispatch, useHook }) => {
                         )(syllDispatch)
                     }
                     variant="outlined"
-                    fullWidth
-                    required
+                    fullWidth                    
+                    error={syll.errorKeys.includes("soldierFamily")}
+                    helperText={syll.errorKeys.includes("soldierFamily") && syll.errorKeysMessage.soldierFamily}
                 />
             </Box>
             <Box className="flex items-center space-x-4">
@@ -211,6 +223,8 @@ const PageThree = ({ syll, syllDispatch, useHook }) => {
                     variant="outlined"
                     fullWidth
                     required
+                    error={syll.errorKeys.includes("id")}
+                    helperText={syll.errorKeys.includes("id") && syll.errorKeysMessage.id}
                 />
                 <DatePicker
                     label="(25.2) Ngày cấp"
@@ -222,6 +236,11 @@ const PageThree = ({ syll, syllDispatch, useHook }) => {
                     minDate={getSubtractDate(16)}
                     sx={{ border: 0 }}
                     className="w-full"
+                    slotProps={{
+                        textField: {
+                            required: true
+                        }
+                    }}
                 />
                 <TextField
                     label="(26) Số BHXH"
@@ -236,6 +255,8 @@ const PageThree = ({ syll, syllDispatch, useHook }) => {
                     variant="outlined"
                     fullWidth
                     required
+                    error={syll.errorKeys.includes("socialId")}
+                    helperText={syll.errorKeys.includes("socialId") && syll.errorKeysMessage.socialId}
                 />
             </Box>
             <Box className="flex flex-col justify-center space-y-4">
@@ -274,6 +295,7 @@ const PageThree = ({ syll, syllDispatch, useHook }) => {
                                     }}
                                 >
                                     <TableCell
+                                        aria-required
                                         contentEditable
                                         align="center"
                                         onBlur={(e) =>
@@ -580,7 +602,6 @@ const PageThree = ({ syll, syllDispatch, useHook }) => {
                     multiline
                     maxRows={4}
                     fullWidth
-                    required
                 />
                 <Typography variant="caption">
                     Tham gia hoặc có quan hệ với các tổ chức chính trị, kinh tế,
@@ -599,7 +620,6 @@ const PageThree = ({ syll, syllDispatch, useHook }) => {
                     multiline
                     maxRows={4}
                     fullWidth
-                    required
                 />
                 <Typography variant="caption">
                     Có thân nhân (Cha, Mẹ, Vợ, Chồng, con, anh chị em ruột) ở
@@ -617,7 +637,6 @@ const PageThree = ({ syll, syllDispatch, useHook }) => {
                     multiline
                     maxRows={4}
                     fullWidth
-                    required
                 />
             </Box>
             <Box className="flex flex-col space-y-4">

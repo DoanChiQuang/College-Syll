@@ -7,14 +7,25 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import MyDocument from './Document.jsx';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <App />,
+    },
+    {
+        path: '/word',
+        element: <MyDocument />,
+    },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <App />
-          {/* <MyDocument /> */}
+            <RouterProvider router={router} />
         </LocalizationProvider>
     </React.StrictMode>
 );

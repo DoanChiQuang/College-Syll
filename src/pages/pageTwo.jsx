@@ -42,6 +42,8 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                 }
                 variant="outlined"
                 required
+                error={syll.errorKeys.includes("applyJob")}
+                helperText={syll.errorKeys.includes("applyJob") && syll.errorKeysMessage.applyJob}
             />
             <Box className="flex items-center space-x-4">
                 <DatePicker
@@ -54,6 +56,11 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                     minDate={getSubtractDate()}
                     sx={{ border: 0 }}
                     className="w-full"
+                    slotProps={{
+                        textField: {
+                            required: true
+                        }
+                    }}
                 />
                 <TextField
                     label="(11.2) Cơ quan tuyển dụng"
@@ -68,6 +75,8 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                     variant="outlined"
                     required
                     fullWidth
+                    error={syll.errorKeys.includes("applyOrgan")}
+                    helperText={syll.errorKeys.includes("applyOrgan") && syll.errorKeysMessage.applyOrgan}
                 />
             </Box>
             <TextField
@@ -82,6 +91,8 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                 }
                 variant="outlined"
                 required
+                error={syll.errorKeys.includes("jobPosition")}
+                helperText={syll.errorKeys.includes("jobPosition") && syll.errorKeysMessage.jobPosition}
             />
             <TextField
                 label="(13) Công việc chính được giao"
@@ -95,6 +106,8 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                 }
                 variant="outlined"
                 required
+                error={syll.errorKeys.includes("jobTitle")}
+                helperText={syll.errorKeys.includes("jobTitle") && syll.errorKeysMessage.jobTitle}
             />
             <Box className="flex items-center space-x-4">
                 <Autocomplete
@@ -115,6 +128,7 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                         <TextField
                             {...params}
                             label="(14.1) Ngạch công chức (viên chức)"
+                            required
                         />
                     )}
                 />
@@ -140,6 +154,8 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                     }
                     fullWidth
                     required
+                    error={syll.errorKeys.includes("salaryWage")}
+                    helperText={syll.errorKeys.includes("salaryWage") && syll.errorKeysMessage.salaryWage}
                 />
                 <TextField
                     label="(14.4) Hệ số"
@@ -154,6 +170,8 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                     variant="outlined"
                     fullWidth
                     required
+                    error={syll.errorKeys.includes("salaryCoefficient")}
+                    helperText={syll.errorKeys.includes("salaryCoefficient") && syll.errorKeysMessage.salaryCoefficient}
                 />
                 <DatePicker
                     label="(14.5) Ngày hưởng"
@@ -167,6 +185,11 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                     views={['day']}
                     sx={{ border: 0 }}
                     className="w-full"
+                    slotProps={{
+                        textField: {
+                            required: true
+                        }
+                    }}
                 />
                 <TextField
                     label="(14.6) Phụ cấp chức vụ"
@@ -181,6 +204,8 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                     variant="outlined"
                     fullWidth
                     required
+                    error={syll.errorKeys.includes("salaryAddPosition")}
+                    helperText={syll.errorKeys.includes("salaryAddPosition") && syll.errorKeysMessage.salaryAddPosition}
                 />
                 <TextField
                     label="(14.7) Phụ cấp khác"
@@ -195,6 +220,8 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                     variant="outlined"
                     fullWidth
                     required
+                    error={syll.errorKeys.includes("salaryAddOther")}
+                    helperText={syll.errorKeys.includes("salaryAddOther") && syll.errorKeysMessage.salaryAddOther}
                 />
             </Box>
             <Autocomplete
@@ -215,6 +242,7 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                     <TextField
                         {...params}
                         label="(15.1) Trình độ giáo dục phổ thông (đã tốt nghiệp lớp mấy/thuộc hệ nào)"
+                        required
                     />
                 )}
             />
@@ -231,6 +259,8 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                 variant="outlined"
                 fullWidth
                 required
+                error={syll.errorKeys.includes("qualification")}
+                helperText={syll.errorKeys.includes("qualification") && syll.errorKeysMessage.qualification}
             />
             <Box className="flex items-center space-x-4">
                 <Autocomplete
@@ -250,7 +280,8 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                     renderInput={(params) => (
                         <TextField
                             {...params}
-                            label="15.3) Lý luận chính trị"
+                            label="(15.3) Lý luận chính trị"
+                            required
                         />
                     )}
                 />
@@ -267,6 +298,8 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                     variant="outlined"
                     fullWidth
                     required
+                    error={syll.errorKeys.includes("stateManage")}
+                    helperText={syll.errorKeys.includes("stateManage") && syll.errorKeysMessage.stateManage}
                 />
             </Box>
             <Box className="flex items-center space-x-4">
@@ -283,6 +316,8 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                     variant="outlined"
                     fullWidth
                     required
+                    error={syll.errorKeys.includes("languageDegree")}
+                    helperText={syll.errorKeys.includes("languageDegree") && syll.errorKeysMessage.languageDegree}
                 />
                 <TextField
                     label="(15.6) Tin học"
@@ -297,6 +332,8 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                     variant="outlined"
                     fullWidth
                     required
+                    error={syll.errorKeys.includes("ITDegree")}
+                    helperText={syll.errorKeys.includes("ITDegree") && syll.errorKeysMessage.ITDegree}
                 />
             </Box>
             <Box className="flex items-center space-x-4">
@@ -355,8 +392,9 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                         )(syllDispatch)
                     }
                     variant="outlined"
-                    fullWidth
-                    required
+                    fullWidth                    
+                    error={syll.errorKeys.includes("joinSocialOrganWork")}
+                    helperText={syll.errorKeys.includes("joinSocialOrganWork") && syll.errorKeysMessage.joinSocialOrganWork}
                 />
             </Box>
             <Box className="flex items-center space-x-4">
@@ -399,8 +437,9 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                         )(syllDispatch)
                     }
                     variant="outlined"
-                    fullWidth
-                    required
+                    fullWidth                    
+                    error={syll.errorKeys.includes("rank")}
+                    helperText={syll.errorKeys.includes("rank") && syll.errorKeysMessage.rank}
                 />
             </Box>
             <TextField
@@ -414,8 +453,9 @@ const PageTwo = ({ syll, syllDispatch, useHook }) => {
                     )(syllDispatch)
                 }
                 variant="outlined"
-                fullWidth
-                required
+                fullWidth                
+                error={syll.errorKeys.includes("title")}
+                helperText={syll.errorKeys.includes("title") && syll.errorKeysMessage.title}
             />
         </Box>
     );

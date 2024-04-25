@@ -9,8 +9,7 @@ import {
     ONDELETE_ROWTABLE,
 } from '../../constants/syll';
 
-export const onChangeTextField = (key, value, validFunc) => (dispatch) => {
-    console.log(key, value);
+export const onChangeTextField = (key, value, validFunc) => (dispatch) => {    
     if (validFunc) {
         const validate = validFunc(value);
         if (!validate) dispatch({ type: ONCHANGE_SUCCESS, key, value });

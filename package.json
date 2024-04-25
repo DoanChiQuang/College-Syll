@@ -19,7 +19,11 @@
     "@react-pdf/renderer": "^3.4.2",
     "axios": "^1.6.8",
     "dayjs": "^1.11.10",
-    "react-dom": "^18.2.0"
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.4",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.23.0",
+    "sort-by": "^1.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

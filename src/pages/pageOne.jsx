@@ -15,7 +15,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Autocomplete from '@mui/material/Autocomplete';
 import {
     validateName,
-    validateValueWithSpecialCharacters,
+    validateNameCanNull,
 } from '../utils/validateFunc';
 
 const PageOne = ({ syll, syllDispatch, useHook }) => {
@@ -82,7 +82,7 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
         syll.value.placeOfLiving.districtId,
     ]);
 
-    const { SelectedValue, getSubtractDate } = useHook;
+    const { SelectedValue, getSubtractDate } = useHook;    
 
     return (
         <Box className="flex flex-col space-y-4">
@@ -97,7 +97,9 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                     )(syllDispatch)
                 }
                 variant="outlined"
-                required
+                required          
+                error={syll.errorKeys.includes("realname")}
+                helperText={syll.errorKeys.includes("realname") && syll.errorKeysMessage.realname}
             />
             <TextField
                 label="(2) Tên gọi khác"
@@ -106,10 +108,12 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                     onChangeTextField(
                         'nickname',
                         e.target.value,
-                        validateName
+                        validateNameCanNull
                     )(syllDispatch)
                 }
                 variant="outlined"
+                error={syll.errorKeys.includes("nickname")}
+                helperText={syll.errorKeys.includes("nickname") && syll.errorKeysMessage.nickname}
             />
             <DatePicker
                 label="(3) Ngày sinh"
@@ -120,6 +124,11 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                 format="DD/MM/YYYY"
                 maxDate={getSubtractDate(18)}
                 sx={{ border: 0 }}
+                slotProps={{
+                    textField: {
+                        required: true
+                    }
+                }}
             />
             <FormGroup>
                 <Box className="flex items-center space-x-4">
@@ -178,7 +187,7 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                         options={syll.value.placeOfBirth.address.province}
                         fullWidth
                         renderInput={(params) => (
-                            <TextField {...params} label="Tỉnh/Thành phố" />
+                            <TextField {...params} label="Tỉnh/Thành phố" required />
                         )}
                     />
                     <Autocomplete
@@ -197,7 +206,7 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                         options={syll.value.placeOfBirth.address.district}
                         fullWidth
                         renderInput={(params) => (
-                            <TextField {...params} label="Quận/Huyện" />
+                            <TextField {...params} label="Quận/Huyện" required />
                         )}
                     />
                     <Autocomplete
@@ -215,7 +224,7 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                         options={syll.value.placeOfBirth.address.ward}
                         fullWidth
                         renderInput={(params) => (
-                            <TextField {...params} label="Phường/Xã" />
+                            <TextField {...params} label="Phường/Xã" required />
                         )}
                     />
                 </Box>
@@ -240,7 +249,7 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                         options={syll.value.homeTown.address.province}
                         fullWidth
                         renderInput={(params) => (
-                            <TextField {...params} label="Tỉnh/Thành phố" />
+                            <TextField {...params} label="Tỉnh/Thành phố" required />
                         )}
                     />
                     <Autocomplete
@@ -259,7 +268,7 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                         options={syll.value.homeTown.address.district}
                         fullWidth
                         renderInput={(params) => (
-                            <TextField {...params} label="Quận/Huyện" />
+                            <TextField {...params} label="Quận/Huyện" required />
                         )}
                     />
                     <Autocomplete
@@ -277,7 +286,7 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                         options={syll.value.homeTown.address.ward}
                         fullWidth
                         renderInput={(params) => (
-                            <TextField {...params} label="Phường/Xã" />
+                            <TextField {...params} label="Phường/Xã" required />
                         )}
                     />
                 </Box>
@@ -297,7 +306,7 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                 options={syll.value.nation.data}
                 fullWidth
                 renderInput={(params) => (
-                    <TextField {...params} label="(6) Dân tộc" />
+                    <TextField {...params} label="(6) Dân tộc" required />
                 )}
             />
             <Autocomplete
@@ -315,7 +324,7 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                 options={syll.value.religion.data}
                 fullWidth
                 renderInput={(params) => (
-                    <TextField {...params} label="(7) Tôn giáo" />
+                    <TextField {...params} label="(7) Tôn giáo" required />
                 )}
             />
             <Box className="space-y-2">
@@ -340,7 +349,7 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                         options={syll.value.placeOfRegistered.address.province}
                         fullWidth
                         renderInput={(params) => (
-                            <TextField {...params} label="Tỉnh/Thành phố" />
+                            <TextField {...params} label="Tỉnh/Thành phố" required />
                         )}
                     />
                     <Autocomplete
@@ -359,7 +368,7 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                         options={syll.value.placeOfRegistered.address.district}
                         fullWidth
                         renderInput={(params) => (
-                            <TextField {...params} label="Quận/Huyện" />
+                            <TextField {...params} label="Quận/Huyện" required />
                         )}
                     />
                     <Autocomplete
@@ -377,7 +386,7 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                         options={syll.value.placeOfRegistered.address.ward}
                         fullWidth
                         renderInput={(params) => (
-                            <TextField {...params} label="Phường/Xã" />
+                            <TextField {...params} label="Phường/Xã" required />
                         )}
                     />
                     <TextField
@@ -389,12 +398,12 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                                 {
                                     ...syll.value.placeOfRegistered,
                                     village: e.target.value,
-                                },
-                                validateValueWithSpecialCharacters
+                                }                            
                             )(syllDispatch)
                         }
                         variant="outlined"
                         fullWidth
+                        required
                     />
                     <TextField
                         label="Số nhà, đường phố"
@@ -405,12 +414,12 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                                 {
                                     ...syll.value.placeOfRegistered,
                                     street: e.target.value,
-                                },
-                                validateValueWithSpecialCharacters
+                                }
                             )(syllDispatch)
                         }
                         variant="outlined"
                         fullWidth
+                        required
                     />
                 </Box>
             </Box>
@@ -434,7 +443,7 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                         options={syll.value.placeOfLiving.address.province}
                         fullWidth
                         renderInput={(params) => (
-                            <TextField {...params} label="Tỉnh/Thành phố" />
+                            <TextField {...params} label="Tỉnh/Thành phố" required />
                         )}
                     />
                     <Autocomplete
@@ -453,7 +462,7 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                         options={syll.value.placeOfLiving.address.district}
                         fullWidth
                         renderInput={(params) => (
-                            <TextField {...params} label="Quận/Huyện" />
+                            <TextField {...params} label="Quận/Huyện" required />
                         )}
                     />
                     <Autocomplete
@@ -471,7 +480,7 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                         options={syll.value.placeOfLiving.address.ward}
                         fullWidth
                         renderInput={(params) => (
-                            <TextField {...params} label="Phường/Xã" />
+                            <TextField {...params} label="Phường/Xã" required />
                         )}
                     />
                     <TextField
@@ -483,12 +492,12 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                                 {
                                     ...syll.value.placeOfLiving,
                                     village: e.target.value,
-                                },
-                                validateValueWithSpecialCharacters
+                                }
                             )(syllDispatch)
                         }
                         variant="outlined"
                         fullWidth
+                        required
                     />
                     <TextField
                         label="Số nhà, đường phố"
@@ -499,12 +508,12 @@ const PageOne = ({ syll, syllDispatch, useHook }) => {
                                 {
                                     ...syll.value.placeOfLiving,
                                     street: e.target.value,
-                                },
-                                validateValueWithSpecialCharacters
+                                }
                             )(syllDispatch)
                         }
                         variant="outlined"
                         fullWidth
+                        required
                     />
                 </Box>
             </Box>

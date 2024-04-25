@@ -43,3 +43,14 @@ export const validateNumber = (value) => {
     // Nếu tất cả các điều kiện đều thỏa mãn, trả về null
     return null;
 };
+
+export const validateNameCanNull = (name) => {
+    if (!name) return null;
+    // Kiểm tra xem tên có chứa ký tự đặc biệt hay không
+    if (!/^[a-zA-ZÀ-ỹ\s]+$/.test(name)) {
+        return 'Giá trị chỉ có thể chứa chữ cái và dấu cách.';
+    }
+
+    // Nếu tất cả các điều kiện đều thỏa mãn, trả về null
+    return null;
+};
